@@ -31,4 +31,12 @@ import org.springframework.web.servlet.ModelAndView;
          model.addAttribute("bars", repository.findAll());
          return "bars/list";
      }
+
+    /* Uses the ID selected to delete the Bar from the repository
+-------------------------------------------------- */
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@PathVariable long id) {
+        repository.delete(id);
+        return new ModelAndView("redirect:/bars");
+    }
  }
