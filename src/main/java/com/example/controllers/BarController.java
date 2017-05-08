@@ -65,4 +65,14 @@ import org.springframework.web.servlet.ModelAndView;
         repository.save(bar);
         return new ModelAndView("redirect:/bars");
     }
+
+    /* Edit the Bar by finding the selected bar in the repository via the ID and displaying it on th edit.html page
+-------------------------------------------------- */
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    public String edit(@PathVariable long id,
+                       Model model) {
+        Bar bar = repository.findOne(id);
+        model.addAttribute("bar", bar);
+        return "bars/edit";
+    }
  }
