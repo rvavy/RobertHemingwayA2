@@ -54,4 +54,15 @@ import org.springframework.web.servlet.ModelAndView;
         repository.save(new Bar(comment));
         return new ModelAndView("redirect:/bars");
     }
+
+    /* Uses the Bar selected to update by updating the message and saving it in the repository
+-------------------------------------------------- */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ModelAndView update(@RequestParam("bar_id") long id,
+                               @RequestParam("message") String message) {
+        Bar bar = repository.findOne(id);
+        bar.setBar(message);
+        repository.save(bar);
+        return new ModelAndView("redirect:/bars");
+    }
  }
