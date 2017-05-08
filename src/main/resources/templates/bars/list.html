@@ -1,0 +1,39 @@
+<html layout:decorator="layout">
+
+<div layout:fragment="content">
+
+
+    <table class="table table-striped" id="bars_list">
+        <thead>
+        <tr>
+            <th>Bars in Huddersfield:</th>
+            <th>Delete/Edit</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="bar : ${bars}">
+            <td class="message" data-th-text="${bar.bar}"></td>
+
+            <td>
+                <a th:href="@{'/bars/{id}/delete'(id=${bar.id})}" class="delete" th:attr="name=${bar.bar}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/bars/{id}/edit'(id=${bar.id})}" class="edit" th:attr="name=${bar.bar}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/bars/new">Add Bar</a>
+</div>
+</html>
