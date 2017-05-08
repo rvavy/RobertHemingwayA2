@@ -46,4 +46,12 @@ import org.springframework.web.servlet.ModelAndView;
     public String newProject() {
         return "bars/new";
     }
+
+    /* Saves the Bar created in the repository
+-------------------------------------------------- */
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ModelAndView create(@RequestParam("message") String comment) {
+        repository.save(new Bar(comment));
+        return new ModelAndView("redirect:/bars");
+    }
  }
