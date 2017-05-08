@@ -39,4 +39,11 @@ import org.springframework.web.servlet.ModelAndView;
         repository.delete(id);
         return new ModelAndView("redirect:/bars");
     }
+
+    /* Direct to new.html to create a new bar
+    -------------------------------------------------- */
+    @RequestMapping(value="/new", method = RequestMethod.GET)
+    public String newProject() {
+        return "bars/new";
+    }
  }
